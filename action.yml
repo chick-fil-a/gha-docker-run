@@ -37,4 +37,4 @@ runs:
         echo "$CMD";
         [ ! -z "$COMMANDS" ] && CMD="${CMD} ${COMMANDS}";
         echo "Running: $CMD";
-        $($CMD)
+        $(echo $CMD)
