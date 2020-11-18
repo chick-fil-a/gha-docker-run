@@ -1,0 +1,28 @@
+name: Docker Run
+description: A GitHub Action to run a docker container with current workspace mapped and github actions env vars available.
+inputs:
+  image:  # id of input
+    description: 'image name and tag'
+    required: true
+  entrypoint:
+    description: 'entrypoint to override image default'
+    required: false
+  commands:
+    description: 'commands to run on docker image. Uses -it options'
+    required: false
+  user:
+    description: 'user to override image default'
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - shell: bash 
+      run: >
+        cmd = "docker run"
+        if commands add -it
+        set docker env
+        mount folders
+        if user add --user
+        if entrypoint add --entrypoint
+        if image add image
+        if commands add commands
