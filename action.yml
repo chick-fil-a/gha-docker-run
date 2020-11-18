@@ -18,12 +18,12 @@ runs:
   steps:
     - shell: bash 
       run: >
-        IMAGE=${{ inputs.image }};
-        ENTRYPOINT=${{ inputs.entrypoint }};
-        COMMANDS=${{ inputs.commands }};
-        USER=${{ inputs.user }};
+        IMAGE="${{ inputs.image }}";
+        ENTRYPOINT="${{ inputs.entrypoint }}";
+        COMMANDS="${{ inputs.commands }}";
+        USER="${{ inputs.user }}";
         
-        CMD = "docker run";
+        CMD="docker run";
         if [ ! -z "$COMMANDS" ]; then; CMD="${CMD} -it"; fi;
         CMD="${CMD} --env-file $GITHUB_ENV";
         CMD="${CMD} --workdir /github/workspace -v $(echo $PWD):/github/workspace
