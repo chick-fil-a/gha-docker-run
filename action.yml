@@ -33,7 +33,7 @@ runs:
         echo "$CMD";
         [ ! -z "$USER" ] && CMD="${CMD} --user ${USER}"
         echo "$CMD";
-        [ ! -z "$ENTRYPOINT" ]; then; CMD="${CMD} --entrypoint ${ENTRYPOINT}"
+        [ ! -z "$ENTRYPOINT" ]; && CMD="${CMD} --entrypoint ${ENTRYPOINT}"
         echo "$CMD";
         [ ! -z "$IMAGE" ] && CMD="${CMD} ${IMAGE}";
         echo "$CMD";
