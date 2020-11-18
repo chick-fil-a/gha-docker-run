@@ -31,5 +31,5 @@ runs:
         if [ ! -z "$ENTRYPOINT" ]; then; CMD="${CMD} --entrypoint ${ENTRYPOINT}"; fi;
         if [ ! -z "$IMAGE" ]; then; CMD="${CMD} ${IMAGE}"; fi;
         if [ ! -z "$COMMANDS" ]; then; CMD="${CMD} ${COMMANDS}"; fi;
-        
-        `$CMD`
+        echo "Running: $CMD";
+        `$CMD`;
