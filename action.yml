@@ -17,7 +17,8 @@ runs:
   using: "composite"
   steps:
     - shell: bash 
-      run: >
+      run: |
+        echo hello
         IMAGE="${{ inputs.image }}";
         ENTRYPOINT="${{ inputs.entrypoint }}";
         COMMANDS="${{ inputs.commands }}";
