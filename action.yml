@@ -25,12 +25,18 @@ runs:
         USER="${{ inputs.user }}";
         
         CMD="docker run";
-        if [ ! -z "$COMMANDS" ]; then; CMD="${CMD} -it"; fi;
+        [ ! -z "$COMMANDS" ] && CMD="${CMD} -it"
+        echo "$CMD";
         CMD="${CMD} --env-file $GITHUB_ENV";
+        echo "$CMD";
         CMD="${CMD} --workdir /github/workspace -v $(echo $PWD):/github/workspace";
+        echo "$CMD";
         if [ ! -z "$USER" ]; then; CMD="${CMD} --user ${USER}"; fi;
+        echo "$CMD";
         if [ ! -z "$ENTRYPOINT" ]; then; CMD="${CMD} --entrypoint ${ENTRYPOINT}"; fi;
+        echo "$CMD";
         if [ ! -z "$IMAGE" ]; then; CMD="${CMD} ${IMAGE}"; fi;
+        echo "$CMD";
         if [ ! -z "$COMMANDS" ]; then; CMD="${CMD} ${COMMANDS}"; fi;
         echo "Running: $CMD";
         $(echo $CMD);
