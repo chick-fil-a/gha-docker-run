@@ -14,27 +14,5 @@ inputs:
     description: 'user to override image default'
     required: false
 runs:
-  using: "composite"
-  steps:
-    - shell: bash 
-      run: |
-        echo hello
-        IMAGE="${{ inputs.image }}";
-        ENTRYPOINT="${{ inputs.entrypoint }}";
-        COMMANDS="${{ inputs.commands }}";
-        USER="${{ inputs.user }}";
-        
-        CMD="docker run --rm";
-        CMD="${CMD} --env-file $GITHUB_ENV";
-        echo "$CMD";
-        CMD="${CMD} --workdir /github/workspace -v $(echo $PWD):/github/workspace";
-        echo "$CMD";
-        [ ! -z "$USER" ] && CMD="${CMD} --user ${USER}"
-        echo "$CMD";
-        [ ! -z "$ENTRYPOINT" ] && CMD="${CMD} --entrypoint ${ENTRYPOINT}"
-        echo "$CMD";
-        [ ! -z "$IMAGE" ] && CMD="${CMD} ${IMAGE}";
-        echo "$CMD";
-        [ ! -z "$COMMANDS" ] && CMD="${CMD} ${COMMANDS}";
-        echo "Running: $CMD";
-        $(echo $CMD)
+  using: 'node12'
+  main: 'index.js'
