@@ -31,12 +31,12 @@ runs:
         echo "$CMD";
         CMD="${CMD} --workdir /github/workspace -v $(echo $PWD):/github/workspace";
         echo "$CMD";
-        if [ ! -z "$USER" ]; then; CMD="${CMD} --user ${USER}"; fi;
+        [ ! -z "$USER" ] && CMD="${CMD} --user ${USER}"
         echo "$CMD";
-        if [ ! -z "$ENTRYPOINT" ]; then; CMD="${CMD} --entrypoint ${ENTRYPOINT}"; fi;
+        [ ! -z "$ENTRYPOINT" ]; then; CMD="${CMD} --entrypoint ${ENTRYPOINT}"
         echo "$CMD";
-        if [ ! -z "$IMAGE" ]; then; CMD="${CMD} ${IMAGE}"; fi;
+        [ ! -z "$IMAGE" ] && CMD="${CMD} ${IMAGE}";
         echo "$CMD";
-        if [ ! -z "$COMMANDS" ]; then; CMD="${CMD} ${COMMANDS}"; fi;
+        [ ! -z "$COMMANDS" ] && CMD="${CMD} ${COMMANDS}";
         echo "Running: $CMD";
         $(echo $CMD);
