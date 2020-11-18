@@ -46,6 +46,10 @@ async function run() {
         console.log(`Running: ${run_cmd}`)
         await exec.exec(run_cmd)
         core.endGroup()
+
+        core.startGroup('fixing permissions');
+        await exec.exec("sudo chown actions:actions .")
+        core.endGroup
         
     } catch (error) {
         core.setFailed(error.message);
