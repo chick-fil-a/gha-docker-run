@@ -24,9 +24,7 @@ runs:
         COMMANDS="${{ inputs.commands }}";
         USER="${{ inputs.user }}";
         
-        CMD="docker run";
-        [ ! -z "$COMMANDS" ] && CMD="${CMD} -it"
-        echo "$CMD";
+        CMD="docker run --rm";
         CMD="${CMD} --env-file $GITHUB_ENV";
         echo "$CMD";
         CMD="${CMD} --workdir /github/workspace -v $(echo $PWD):/github/workspace";
