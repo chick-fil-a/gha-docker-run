@@ -32,4 +32,4 @@ runs:
         if [ ! -z "$IMAGE" ]; then; CMD="${CMD} ${IMAGE}"; fi;
         if [ ! -z "$COMMANDS" ]; then; CMD="${CMD} ${COMMANDS}"; fi;
         echo "Running: $CMD";
-        `$CMD`;
+        $($CMD);
