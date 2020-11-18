@@ -26,7 +26,7 @@ runs:
         CMD="docker run";
         if [ ! -z "$COMMANDS" ]; then; CMD="${CMD} -it"; fi;
         CMD="${CMD} --env-file $GITHUB_ENV";
-        CMD="${CMD} --workdir /github/workspace -v $(echo $PWD):/github/workspace
+        CMD="${CMD} --workdir /github/workspace -v $(echo $PWD):/github/workspace";
         if [ ! -z "$USER" ]; then; CMD="${CMD} --user ${USER}"; fi;
         if [ ! -z "$ENTRYPOINT" ]; then; CMD="${CMD} --entrypoint ${ENTRYPOINT}"; fi;
         if [ ! -z "$IMAGE" ]; then; CMD="${CMD} ${IMAGE}"; fi;
