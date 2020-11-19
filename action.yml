@@ -5,10 +5,10 @@ inputs:
     description: 'image name and tag'
     required: true
   run:
-    description: 'commands to run on docker image. Uses -it options'
+    description: 'Bash commands to run on docker image. Overrides entrypoint of docker image to /bin/bash'
     required: false
   user:
-    description: 'user to override image default'
+    description: 'User to override image default'
     required: false
 runs:
   using: 'node12'
