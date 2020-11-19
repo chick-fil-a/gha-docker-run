@@ -15,6 +15,10 @@ async function run() {
         if (!!password.trim()) {
             core.setSecret(password)
         }
+
+        context = github.context
+
+        console.log(JSON.stringify(context))
     
         core.startGroup('docker login');
         var login_cmd;
