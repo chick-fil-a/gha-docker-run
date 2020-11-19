@@ -58,8 +58,9 @@ async function run() {
 
 function setDockerEnvVars() {
     var env_vars = [];
+    var excluded_env_vars=['PAT']
     for (let i in process.env) { 
-        if (!!process.env[i].trim()) {
+        if (!!process.env[i].trim() && !excluded_env_vars.includes(i)) {
             env_vars.push(`-e ${i}=${process.env[i]}`)
         }
     }
