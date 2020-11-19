@@ -1,7 +1,7 @@
 name: Docker Run
 description: A GitHub Action to run a docker container from private or public registries with current workspace mapped and github actions env vars available.
 inputs:
-  image:  # id of input
+  image:
     description: 'image name and tag'
     required: true
   user:
