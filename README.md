@@ -17,33 +17,7 @@ steps:
 
 # Inputs
 
-### image:
-The name of the docker image to run
-( **required** )
-
---
-### run:
-Bash commands to run on docker image. Note that this overrides entrypoint of docker image to /bin/bash.
-
---
-### user:
-The user to run the docker image as.
-
---
-### registry:
-The private docker registry to login to.
-
---
-### username:
-The username with which to login to the private docker registry.
-
---
-### password:
-The password with which to login to the private docker registry.
-
---
-
-For more details see: [action.yaml](action.yaml)
+Please see: [action.yaml](action.yaml)
 
 # License
 
