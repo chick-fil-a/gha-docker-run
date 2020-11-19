@@ -30,7 +30,7 @@ async function run() {
         core.endGroup()
 
         core.startGroup('docker run');
-        run_cmd=`docker run --rm --env-file ${process.env.GITHUB_ENV} --workdir /github/workspace -v ${process.env.PWD}}:/github/workspace -v /var/run/docker.sock:/var/run/docker.sock`;
+        run_cmd=`docker run --rm ${setDockerEnvVars()} --workdir /github/workspace -v ${process.env.PWD}}:/github/workspace -v /var/run/docker.sock:/var/run/docker.sock`;
         if (!!user.trim()) { 
             run_cmd=`${run_cmd} --user ${user}`
         }
@@ -54,6 +54,14 @@ async function run() {
     } catch (error) {
         core.setFailed(error.message);
     }
+}
+
+function setDockerEnvVars() {
+    var env_vars = [];
+    for (let i in process.env) { 
+        env_vars.push(`-e ${i}=${process.env[i]}`)
+    }
+    return env_vars.join(' ')
 }
     
 run();
