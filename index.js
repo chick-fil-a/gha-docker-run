@@ -59,7 +59,9 @@ async function run() {
 function setDockerEnvVars() {
     var env_vars = [];
     for (let i in process.env) { 
-        env_vars.push(`-e ${i}=${process.env[i]}`)
+        if (!!process.env[i].trim()) {
+            env_vars.push(`-e ${i}=${process.env[i]}`)
+        }
     }
     return env_vars.join(' ')
 }
