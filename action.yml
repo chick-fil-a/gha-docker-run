@@ -4,10 +4,7 @@ inputs:
   image:  # id of input
     description: 'image name and tag'
     required: true
-  entrypoint:
-    description: 'entrypoint to override image default'
-    required: false
-  commands:
+  run:
     description: 'commands to run on docker image. Uses -it options'
     required: false
   user:

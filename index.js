@@ -7,7 +7,7 @@ async function run() {
         // `who-to-greet` input defined in action metadata file
         const image = core.getInput('image');
         // const entrypoint = core.getInput('entrypoint');
-        const commands = core.getInput('commands');
+        const commands = core.getInput('run');
         const user = core.getInput('user');
         const registry = core.getInput('registry');
         const username = core.getInput('username');
