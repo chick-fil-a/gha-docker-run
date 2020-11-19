@@ -4,11 +4,20 @@ inputs:
   image:  # id of input
     description: 'image name and tag'
     required: true
+  user:
+    description: 'User to run the docker image as'
+    required: false
   run:
     description: 'Bash commands to run on docker image. Overrides entrypoint of docker image to /bin/bash'
     required: false
-  user:
-    description: 'User to override image default'
+  registry:
+    description: 'The private docker registry to login to'
+    required: false
+  username: 
+    description: 'The username with which to login to the private docker registry.'
+    required: false
+  password: 
+    description: 'The password with which to login to the private docker registry.'
     required: false
 runs:
   using: 'node12'
