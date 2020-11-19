@@ -47,4 +47,4 @@ For more details see: [action.yaml](action.yaml)
 
 # License
 
-[Apache License 2.0](https://github.com/cfacorp/gha-clear-workspace/blob/master/LICENSE)
+[Apache License 2.0](LICENSE)
