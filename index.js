@@ -50,7 +50,8 @@ async function run() {
             run_cmd=`${run_cmd} ./docker_commands.sh`
         }
         console.log(`Running: ${run_cmd}`)
-        await exec.exec(run_cmd, shell: true)
+        await exec.exec(run_cmd)
+        await exec.exec('rm -rf docker_commands.sh')
         core.endGroup()
 
         core.startGroup('fixing permissions');
