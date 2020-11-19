@@ -17,7 +17,7 @@ steps:
 
 # Inputs
 
-Please see: [action.yaml](action.yaml)
+Please see details in [action.yaml](action.yml)
 
 # License
 
