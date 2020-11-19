@@ -67,7 +67,7 @@ function setDockerEnvVars() {
     var env_vars = [];
     for (let i in process.env) { 
         if (!!process.env[i].trim()) {
-            env_vars.push(`-e "${i}=${process.env[i].replace('\n','\\n')}"`)
+            env_vars.push(`-e \"${i}=${process.env[i].replace('\n','\\n')}\"`)
         }
     }
     return env_vars.join(' ')
