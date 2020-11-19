@@ -6,7 +6,7 @@ async function run() {
     try {
         // `who-to-greet` input defined in action metadata file
         const image = core.getInput('image');
-        const entrypoint = core.getInput('entrypoint');
+        // const entrypoint = core.getInput('entrypoint');
         const commands = core.getInput('commands');
         const user = core.getInput('user');
         const registry = core.getInput('registry');
@@ -36,17 +36,21 @@ async function run() {
         if (!!user.trim()) { 
             run_cmd=`${run_cmd} --user ${user}`
         }
-        if (!!entrypoint.trim()) {
-            run_cmd=`${run_cmd} --entrypoint ${entrypoint}`
+        if (!!commands) {
+            run_cmd=`${run_cmd} --entrypoint /bin/bash`
         }
         if (!!image.trim()) {
             run_cmd=`${run_cmd} ${image}`;
         }
         if (!!commands.trim()) {
-            run_cmd=`${run_cmd} ${commands}`
+            fs = require('fs');
+            fs.writeFile('docker_commands.sh', commands, function (err) {
+                if (err) return console.log(err);
+            });
+            run_cmd=`${run_cmd} ./docker_commands.sh`
         }
         console.log(`Running: ${run_cmd}`)
-        await exec.exec(run_cmd)
+        await exec.exec(run_cmd, shell: true)
         core.endGroup()
 
         core.startGroup('fixing permissions');
