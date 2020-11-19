@@ -12,6 +12,9 @@ async function run() {
         const registry = core.getInput('registry');
         const username = core.getInput('username');
         const password = core.getInput('password');
+        if (!!password.trim()) {
+            core.setSecret(password)
+        }
         
         var run_cmd;
     
