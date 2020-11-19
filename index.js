@@ -50,8 +50,8 @@ async function run() {
             run_cmd=`${run_cmd} ./docker_commands.sh`
         }
         console.log(`Running: `)
-        await exec.exec(run_cmd)
         await exec.exec('cat ./docker_commands.sh')
+        await exec.exec(run_cmd)
         await exec.exec('rm -rf docker_commands.sh')
         core.endGroup()
 
