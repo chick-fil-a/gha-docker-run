@@ -32,7 +32,7 @@ async function run() {
 
         core.startGroup('docker run');
         var run_cmd;
-        run_cmd=`docker run --rm ${setDockerEnvVars()} --workdir /github/workspace -v ${process.env.PWD}}:/github/workspace -v /var/run/docker.sock:/var/run/docker.sock`;
+        run_cmd=`docker run --rm ${setDockerEnvVars()} --workdir /github/workspace -v ${process.env.PWD}:/github/workspace -v /var/run/docker.sock:/var/run/docker.sock`;
         if (!!user.trim()) { 
             run_cmd=`${run_cmd} --user ${user}`
         }
