@@ -4,14 +4,13 @@ const github = require('@actions/github');
 
 async function run() {
     try {
-        // `who-to-greet` input defined in action metadata file
         const image = core.getInput('image');
-        // const entrypoint = core.getInput('entrypoint');
         const commands = core.getInput('run');
         const user = core.getInput('user');
         const registry = core.getInput('registry');
         const username = core.getInput('username');
         const password = core.getInput('password');
+        
         if (!!password.trim()) {
             core.setSecret(password)
         }
