@@ -1,13 +1,13 @@
 # ghs-docker-run
-The `timharris777/gha-docker-run` action is used to run a docker container from a private or publice registry with the current workspace mapped and github actions env vars available. It also fixes permissions after it runs so that created files are owned by `actions:actions`.
+The `chick-fil-a/gha-docker-run` action is used to run a docker container from a private or publice registry with the current workspace mapped and github actions env vars available. It also fixes permissions after it runs so that created files are owned by `actions:actions`.
 
-# Usage
+## Usage
 
 This action can be run on any GitHub hosted runners or self-hosted runners as long as `bash` is available as a shell.
 
 ```
 steps:
-  - uses: timharris777/gha-docker-run@master
+  - uses: chick-fil-a/gha-docker-run@v1
     with: 
       image: lambci/lambda:build-python3.8
       run: |
@@ -15,10 +15,14 @@ steps:
         ls -la
 ```
 
-# Inputs
+## Inputs
 
 Please see details in [action.yaml](action.yml)
 
-# License
+## Contributing
+
+Check out our [contributing guidelines](CONTRIBUTING.md)
+
+## License
 
 [Apache License 2.0](LICENSE)
