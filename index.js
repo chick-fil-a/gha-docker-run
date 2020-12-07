@@ -53,7 +53,7 @@ async function run() {
         core.endGroup()
 
         core.startGroup('fixing permissions');
-        await exec.exec("sudo chown -R actions:actions .")
+        await exec.exec("sudo chown -R actions:actions . || sudo chown -R runner:docker .")
         core.endGroup
         
     } catch (error) {
