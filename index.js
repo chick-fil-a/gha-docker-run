@@ -1,6 +1,8 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
 const github = require('@actions/github');
+const os = require('os');
+
 
 async function run() {
     try {
@@ -53,7 +55,16 @@ async function run() {
         core.endGroup()
 
         core.startGroup('fixing permissions');
-        await exec.exec("sudo chown -R actions:actions . || sudo chown -R runner:docker .")
+        // START -> Support for original runner permissions
+        if (os.userInfo().username == "actions") {
+          await exec.exec("sudo chown -R actions:actions .");
+        }
+        // END -> Support for original runner permissions
+        // START -> 12/7/2020: Support for recent changes to runner user:group permissions
+        if (os.userInfo().username == "runner") {
+          await exec.exec("sudo chown -R runner:docker .");
+        }
+        // END -> 12/7/2020: Support for recent changes to runner user:group permissions
         core.endGroup
         
     } catch (error) {
