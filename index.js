@@ -76,7 +76,7 @@ async function run() {
 function setDockerEnvVars(system_env, workflow_env) {
     var env_vars = [];
     for (let i in system_env) { 
-        if (!!system_env[i].trim() && i.trim().includes("GITHUB_"))
+        if (!!system_env[i].trim() && i.trim().includes("GITHUB_")) {
             env_vars.push(`-e \"${i}=${system_env[i].replace(/\n/g,'\\n')}\"`)
         }
     }
