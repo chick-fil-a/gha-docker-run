@@ -12,6 +12,7 @@ async function run() {
         const registry = core.getInput('registry');
         const username = core.getInput('username');
         const password = core.getInput('password');
+        const env_context = JSON.parse(core.getInput('env-context')) || {};
         
         if (!!password.trim()) {
             core.setSecret(password)
@@ -33,7 +34,7 @@ async function run() {
 
         core.startGroup('docker run');
         var run_cmd;
-        run_cmd=`docker run --rm ${setDockerEnvVars()} --workdir /github/workspace -v ${process.cwd()}:/github/workspace -v /var/run/docker.sock:/var/run/docker.sock`;
+        run_cmd=`docker run --rm ${setDockerEnvVars(process.env, env_context)} --workdir /github/workspace -v ${process.cwd()}:/github/workspace -v /var/run/docker.sock:/var/run/docker.sock`;
         if (!!user.trim()) { 
             run_cmd=`${run_cmd} --user ${user}`
         }
@@ -72,11 +73,16 @@ async function run() {
     }
 }
 
-function setDockerEnvVars() {
+function setDockerEnvVars(system_env, workflow_env) {
     var env_vars = [];
-    for (let i in process.env) { 
-        if (!!process.env[i].trim()) {
-            env_vars.push(`-e \"${i}=${process.env[i].replace(/\n/g,'\\n')}\"`)
+    for (let i in system_env) { 
+        if (!!system_env[i].trim() && i.trim().includes("GITHUB_")) {
+            env_vars.push(`-e \"${i}=${system_env[i].replace(/\n/g,'\\n')}\"`)
+        }
+    }
+    for (let i in workflow_env) { 
+        if (!!workflow_env[i].trim()) {
+            env_vars.push(`-e \"${i}=${workflow_env[i].replace(/\n/g,'\\n')}\"`)
         }
     }
     return env_vars.join(' ')

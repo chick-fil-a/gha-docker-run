@@ -1,6 +1,9 @@
 name: Docker Run
 description: A GitHub Action to run a docker container from private or public registries with current workspace mapped and github actions env vars available.
 inputs:
+  env-context:
+    description: 'pass in the workflow env context as '${{ toJSON(env) }}'. Necessary if you want env in docker without polluting docker image with host machine env vars which will cause issues.'
+    required: false
   image:
     description: 'image name and tag'
     required: true
