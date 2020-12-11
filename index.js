@@ -12,7 +12,8 @@ async function run() {
         const registry = core.getInput('registry');
         const username = core.getInput('username');
         const password = core.getInput('password');
-        const env_context = JSON.parse(core.getInput('env-context')) || {};
+        const env_context = core.getInput('env-context', { required: false }) || null;
+
         
         if (!!password.trim()) {
             core.setSecret(password)
@@ -80,10 +81,13 @@ function setDockerEnvVars(system_env, workflow_env) {
             env_vars.push(`-e \"${i}=${system_env[i].replace(/\n/g,'\\n')}\"`)
         }
     }
-    for (let i in workflow_env) { 
-        if (!!workflow_env[i].trim()) {
-            env_vars.push(`-e \"${i}=${workflow_env[i].replace(/\n/g,'\\n')}\"`)
-        }
+    if (workflow_env) {
+        workflow_env = JSON.parse(workflow_env)
+        for (let i in workflow_env) { 
+            if (!!workflow_env[i].trim()) {
+                env_vars.push(`-e \"${i}=${workflow_env[i].replace(/\n/g,'\\n')}\"`)
+            }
+        } 
     }
     return env_vars.join(' ')
 }
