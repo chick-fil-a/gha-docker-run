@@ -12,7 +12,11 @@ async function run() {
         const registry = core.getInput('registry');
         const username = core.getInput('username');
         const password = core.getInput('password');
-        const env_context = JSON.parse(core.getInput('env-context') || {});
+        const env_context = core.getInput('env-context') || {};
+        core.debug(core.getInput('env-context'));
+        core.debug(env_context);
+        JSON.parse(env_context);
+
         
         if (!!password.trim()) {
             core.setSecret(password)
