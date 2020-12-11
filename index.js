@@ -13,7 +13,7 @@ async function run() {
         const username = core.getInput('username');
         const password = core.getInput('password');
         const env_context = core.getInput('env-context', { required: false }) || null;
-        if (env_conext) {
+        if (env_context) {
             core.info('env context available')
         } else {
             core.info('No env context')
