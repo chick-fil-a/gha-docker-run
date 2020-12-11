@@ -13,8 +13,8 @@ async function run() {
         const username = core.getInput('username');
         const password = core.getInput('password');
         const env_context = core.getInput('env-context') || {};
-        core.debug(core.getInput('env-context'));
-        core.debug(env_context);
+        core.info(core.getInput('env-context'));
+        core.info(env_context);
         JSON.parse(env_context);
 
         
