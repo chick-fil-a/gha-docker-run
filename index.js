@@ -12,10 +12,12 @@ async function run() {
         const registry = core.getInput('registry');
         const username = core.getInput('username');
         const password = core.getInput('password');
-        const env_context = core.getInput('env-context') || {};
-        core.info(core.getInput('env-context'));
-        core.info(env_context);
-        JSON.parse(env_context);
+        const env_context = core.getInput('env-context');
+        if (env_conext) {
+            core.info('env context available')
+        } else {
+            core.info('No env context')
+        }
 
         
         if (!!password.trim()) {
