@@ -12,7 +12,7 @@ async function run() {
         const registry = core.getInput('registry');
         const username = core.getInput('username');
         const password = core.getInput('password');
-        const env_context = core.getInput('env-context', { required: false });
+        const env_context = core.getInput('env-context', { required: false }) || null;
         if (env_conext) {
             core.info('env context available')
         } else {
