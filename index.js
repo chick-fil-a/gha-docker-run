@@ -6,6 +6,15 @@ const os = require('os');
 
 async function run() {
     try {
+        
+        const workdir = process.env.WORKING_DIRECTORY
+
+        console.log(workdir)
+        if (workdir && workdir !== '.') {
+            core.info(`📂 Using ${workdir} as working directory...`);
+            process.chdir(workdir);
+        }
+        
         const image = core.getInput('image');
         const commands = core.getInput('run');
         const user = core.getInput('user');
