@@ -2,6 +2,7 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 const github = require('@actions/github');
 const os = require('os');
+const fs = require('fs');
 
 
 async function run() {
