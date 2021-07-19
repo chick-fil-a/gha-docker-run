@@ -59,7 +59,6 @@ async function run() {
             run_cmd=`${run_cmd} ${image}`;
         }
         if (!!commands.trim()) {
-            fs = require('fs');
             fs.writeFile('docker_commands.sh', commands, function (err) {
                 if (err) return console.log(err);
             });
