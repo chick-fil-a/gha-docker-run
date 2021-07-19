@@ -45,6 +45,9 @@ async function run() {
         core.startGroup('docker run');
         var run_cmd;
         run_cmd=`docker run --rm ${setDockerEnvVars(process.env, env_context)} --workdir /github/workspace -v ${process.cwd()}:/github/workspace -v /var/run/docker.sock:/var/run/docker.sock`;
+        if(fs.existsSync(os.homedir()+"/.m2/settings.xml") && fs.existsSync(os.homedir()+"/.m2/settings-security.xml")) {
+            run_cmd=`${run_cmd} -v ${os.homedir()}/.m2:/root/.m2`
+        }
         if (!!user.trim()) { 
             run_cmd=`${run_cmd} --user ${user}`
         }
