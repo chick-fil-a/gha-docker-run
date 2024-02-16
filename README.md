@@ -1,4 +1,4 @@
-# ghs-docker-run
+# gha-docker-run
 The `chick-fil-a/gha-docker-run` action is used to run a docker container from a private or public registry with the current workspace mapped and github actions env vars available. It also fixes permissions after it runs so that created files are owned by `actions:actions`.
 
 ## Usage
