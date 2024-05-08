@@ -23,5 +23,5 @@ inputs:
     description: 'The password with which to login to the private docker registry.'
     required: false
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'index.js'
