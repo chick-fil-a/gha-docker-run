@@ -1,6 +1,6 @@
 # Contributing to this repository <!-- omit in toc -->
 
-1. Check out the [existing issues](https://github.com/chick-fil-a/gha-clear-workspace/issues)
+1. Check out the [existing issues](https://github.com/chick-fil-a/gha-docker-run/issues)
 2. Don't see your issue? Open one
 3. Ready to make a change? Fork the repo
 4. Make your update

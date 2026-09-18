@@ -1,0 +1,23 @@
+name: Smoke test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Run docker-run action
+        uses: ./
+        with:
+          # Action uses --entrypoint /bin/bash; Alpine has no bash (only /bin/sh).
+          image: debian:bookworm-slim
+          run: |
+            echo ok > /github/workspace/smoke-test.txt
+            cat /github/workspace/smoke-test.txt
+
+      - name: Verify workspace file
+        run: test -f smoke-test.txt

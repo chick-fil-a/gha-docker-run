@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
-    "@actions/core": "^1.2.4",
-    "@actions/exec": "^1.0.4",
-    "@actions/github": "^2.2.0"
+    "@actions/core": "^3.0.1",
+    "@actions/exec": "^2.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@vercel/ncc": "^0.43.0"
+  },
   "scripts": {
+    "build": "ncc build index.js -o dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

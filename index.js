@@ -1,8 +1,7 @@
-const core = require('@actions/core');
-const exec = require('@actions/exec');
-const github = require('@actions/github');
-const os = require('os');
-const fs = require('fs');
+import * as core from '@actions/core';
+import * as exec from '@actions/exec';
+import os from 'os';
+import fs from 'fs';
 
 
 async function run() {
@@ -79,7 +78,7 @@ async function run() {
           await exec.exec("sudo chown -R runner:docker .");
         }
         // END -> 12/7/2020: Support for recent changes to runner user:group permissions
-        core.endGroup
+        core.endGroup()
         
     } catch (error) {
         core.setFailed(error.message);
@@ -103,5 +102,5 @@ function setDockerEnvVars(system_env, workflow_env) {
     }
     return env_vars.join(' ')
 }
-    
+
 run();
